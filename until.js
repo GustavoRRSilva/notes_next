@@ -1,0 +1,1 @@
+import {db} from "./src/data/db.json"

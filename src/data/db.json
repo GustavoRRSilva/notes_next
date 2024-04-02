@@ -1,0 +1,22 @@
+{
+  "Accounts": [
+    {
+      "id": 1,
+      "email": "gstvrrds@gmail.com",
+      "password": "guga1234",
+      "name": "Gustavo Rodrigues"
+    },
+    {
+      "id": 2,
+      "email": "gustavorrsilva08@gmail.com",
+      "password": "guga4321",
+      "name": "Gustavo Silva"
+    },
+    {
+      "id": 3,
+      "email": "idmgustavo@gmail.com",
+      "password": "guga2241",
+      "name": "Gustavo Ramos"
+    }
+  ]
+}
