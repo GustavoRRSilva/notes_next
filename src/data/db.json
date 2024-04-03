@@ -4,7 +4,14 @@
       "id": 1,
       "email": "gstvrrds@gmail.com",
       "password": "guga1234",
-      "name": "Gustavo Rodrigues"
+      "name": "Gustavo Rodrigues",
+      "Notes":[{
+        "id" : 1,
+        "Title":"Hello world",
+        "Context":"Hello world lalalalalala"
+      }
+       
+      ]
     },
     {
       "id": 2,
