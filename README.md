@@ -6,3 +6,5 @@ Back-End:
     npm i --save-dev nodemon(instalar nodemon)
     Criar app.js(e adicionar suas infos)
     Configurar server no package.json
+    Configurar dot-env
+    
