@@ -1,10 +1,10 @@
 /* Rotas: 
-    Inicial=> '/' 
-    Criar uma nova rota (`/notes/new`)
+    Inicial=> '/' ✔️
+    Criar uma nova rota (`/notes/new`) ✔️
     Pesquisa de notas (`/search`)
     Visualização de nota individual (`/notes/:id`)
     Editar nota existente(`/notes/:id/edit`)
-    Pegar todas as notas(`/notes/getNotes`)
+    Pegar todas as notas(`/notes/getNotes`)✔️
     Deletar uma nota(`/notes/deleteNote`)
     */
 
@@ -15,6 +15,7 @@ const router = express.Router();
 const {
   insertNote,
   getAllUserNotes,
+  getIndividualNote
 } = require("../controllers/NotesController.js");
 
 //Middlewares
@@ -29,4 +30,5 @@ const validate = require("../middlewares/handleValidation");
 
 router.post("/", authGuard, createNoteValidation(), validate, insertNote);
 router.get("/:id", authGuard, getAllUserNotes);
+router.get("/view/:id",authGuard,getIndividualNote)
 module.exports = router;

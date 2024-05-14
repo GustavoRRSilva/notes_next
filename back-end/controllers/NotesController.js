@@ -31,7 +31,17 @@ const getAllUserNotes = async (req, res) => {
     .exec();
   return res.status(200).json(notes);
 };
+
+const getIndividualNote = async (req, res) => {
+  
+  const user = req.user;
+  const { id } = req.params;
+  const note = await Note.findOne({ _id: id }).exec(); 
+  return res.status(200).json(note);
+};
+
 module.exports = {
   insertNote,
   getAllUserNotes,
+  getIndividualNote,
 };
