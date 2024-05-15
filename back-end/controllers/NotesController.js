@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 /* Rotas: 
     Inicial=> '/' ✔️
     Criar uma nova rota (`/notes/new`) ✔️
-    Pesquisa de notas (`/search`)
+    Pesquisa de notas (`/search`)✔️
     Visualização de nota individual (`/notes/:id`)✔️
     Editar nota existente(`/notes/:id/edit`)✔️
     Pegar todas as notas(`/notes/getNotes`)✔️
@@ -98,14 +98,18 @@ const editNote = async (req, res) => {
       note.content = content;
     }
     await note.save();
-    res
-      .status(200)
-      .json({ note, message: "Nota editada com sucesso" });
+    res.status(200).json({ note, message: "Nota editada com sucesso" });
     // Se tudo estiver certo, continue com o restante do seu código aqui
   } catch (error) {
     // Se ocorrer algum erro na consulta ao banco de dados, retorne um erro 500 (erro interno do servidor)
     res.status(500).json({ errors: ["Ocorreu um erro interno do servidor"] });
   }
+};
+
+const searchNoteByTitle = async (req, res) => {
+  const { q } = req.query;
+  const notes = await Note.find({ title: new RegExp(q, "i") }).exec();
+  res.status(200).json(notes);
 };
 module.exports = {
   insertNote,
@@ -113,4 +117,5 @@ module.exports = {
   getIndividualNote,
   deleteNote,
   editNote,
+  searchNoteByTitle,
 };

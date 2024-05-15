@@ -1,12 +1,12 @@
 const { body } = require("express-validator");
 /* Rotas: 
-    Inicial=> '/' 
-    Criar uma nova rota (`/notes/new`)
-    Pesquisa de notas (`/search`)
-    Visualização de nota individual (`/notes/:id`)
-    Editar nota existente(`/notes/:id/edit`)
-    Pegar todas as notas(`/notes/getNotes`)
-    Deletar uma nota(`/notes/deleteNote`)
+    Inicial=> '/' ✔️
+    Criar uma nova rota (`/notes/new`) ✔️
+    Pesquisa de notas (`/search`)✔️
+    Visualização de nota individual (`/notes/:id`)✔️
+    Editar nota existente(`/notes/:id/edit`)✔️
+    Pegar todas as notas(`/notes/getNotes`)✔️
+    Deletar uma nota(`/notes/deleteNote`)✔️
     */
 
 const editNoteValidation = () => {
