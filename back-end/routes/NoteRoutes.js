@@ -16,7 +16,8 @@ const {
   insertNote,
   getAllUserNotes,
   getIndividualNote,
-  deleteNote
+  deleteNote,
+  editNote,
 } = require("../controllers/NotesController.js");
 
 //Middlewares
@@ -31,6 +32,7 @@ const validate = require("../middlewares/handleValidation.js");
 
 router.post("/", authGuard, createNoteValidation(), validate, insertNote);
 router.get("/", authGuard, getAllUserNotes);
-router.get("/view/:id",authGuard,getIndividualNote);
-router.delete("/:id",authGuard,validate,deleteNote);
+router.get("/view/:id", authGuard, getIndividualNote);
+router.delete("/:id", authGuard, validate, deleteNote);
+router.put("/:id", authGuard, editNoteValidation(), validate, editNote);
 module.exports = router;

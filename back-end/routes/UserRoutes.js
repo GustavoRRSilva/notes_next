@@ -8,7 +8,7 @@ const {
   getCurrentUser,
   update,
   getUserById,
-} = require("../controllers/UserController");
+} = require("../controllers/UsersController");
 
 //Midllewares
 const validate = require("../middlewares/handleValidation");

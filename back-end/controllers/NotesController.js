@@ -6,10 +6,10 @@ const mongoose = require("mongoose");
     Inicial=> '/' ✔️
     Criar uma nova rota (`/notes/new`) ✔️
     Pesquisa de notas (`/search`)
-    Visualização de nota individual (`/notes/:id`)
-    Editar nota existente(`/notes/:id/edit`)
+    Visualização de nota individual (`/notes/:id`)✔️
+    Editar nota existente(`/notes/:id/edit`)✔️
     Pegar todas as notas(`/notes/getNotes`)✔️
-    Deletar uma nota(`/notes/deleteNote`)
+    Deletar uma nota(`/notes/deleteNote`)✔️
     */
 
 const insertNote = async (req, res) => {
@@ -70,9 +70,47 @@ const deleteNote = async (req, res) => {
     res.status(404).json({ errors: ["Nota não encontrada"] });
   }
 };
+
+const editNote = async (req, res) => {
+  const { id } = req.params;
+  const { title, content } = req.body;
+  const reqUser = req.user;
+  const note = Note.findById(id);
+
+  try {
+    const note = await Note.findById(id);
+
+    if (!note) {
+      res.status(404).json({ errors: ["Nota não encontrada"] });
+      return;
+    }
+
+    if (!note.userId.equals(reqUser._id)) {
+      res.status(422).json({ errors: ["Ocorreu um erro, tente mais tarde"] });
+      return;
+    }
+
+    if (title) {
+      note.title = title;
+    }
+
+    if (content) {
+      note.content = content;
+    }
+    await note.save();
+    res
+      .status(200)
+      .json({ note, message: "Nota editada com sucesso" });
+    // Se tudo estiver certo, continue com o restante do seu código aqui
+  } catch (error) {
+    // Se ocorrer algum erro na consulta ao banco de dados, retorne um erro 500 (erro interno do servidor)
+    res.status(500).json({ errors: ["Ocorreu um erro interno do servidor"] });
+  }
+};
 module.exports = {
   insertNote,
   getAllUserNotes,
   getIndividualNote,
-  deleteNote
+  deleteNote,
+  editNote,
 };
