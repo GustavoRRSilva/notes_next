@@ -15,20 +15,22 @@ const router = express.Router();
 const {
   insertNote,
   getAllUserNotes,
-  getIndividualNote
+  getIndividualNote,
+  deleteNote
 } = require("../controllers/NotesController.js");
 
 //Middlewares
 const {
   editNoteValidation,
   createNoteValidation,
-} = require("../middlewares/noteValidation");
-const authGuard = require("../middlewares/authGuard");
-const validate = require("../middlewares/handleValidation");
+} = require("../middlewares/noteValidation.js");
+const authGuard = require("../middlewares/authGuard.js");
+const validate = require("../middlewares/handleValidation.js");
 
 //Routes
 
 router.post("/", authGuard, createNoteValidation(), validate, insertNote);
-router.get("/:id", authGuard, getAllUserNotes);
-router.get("/view/:id",authGuard,getIndividualNote)
+router.get("/", authGuard, getAllUserNotes);
+router.get("/view/:id",authGuard,getIndividualNote);
+router.delete("/:id",authGuard,validate,deleteNote);
 module.exports = router;

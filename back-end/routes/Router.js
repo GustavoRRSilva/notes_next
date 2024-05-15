@@ -8,6 +8,6 @@ router.get("/", (req, res) => {
 });
 
 router.use("/api/users", require("./UserRoutes"));
-router.use("/api/notes",require("./NotesRoutes"));
+router.use("/api/notes",require("./NoteRoutes"));
 
 module.exports = router;
