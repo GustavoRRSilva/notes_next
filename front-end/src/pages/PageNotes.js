@@ -4,7 +4,7 @@ export default function PageNotes() {
   return (
     <>
       <main styles={styles.main}>
-        <p></p>
+        <p>Hello{userName}</p>
       </main>
     </>
   );
