@@ -1,14 +1,28 @@
 import React, { useEffect, useState } from "react";
 import styles from "@/styles/Login.module.css";
 import ButtonInfo from "@/Componentes/ButtonInfo/ButtonInfo";
-import axios from "axios";
-
+import { login, reset } from "@/slice/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import Message from "@/Componentes/Message/message";
 export const Login = ({ info, img, src, alt, inputType }) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const validate = (e)=>{
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector((state) => state.auth);
+  console.log(error)
+  const handleSubmit = (e) => {
     e.preventDefault();
-  }
+
+    const user = {
+      email,
+      password,
+    };
+    dispatch(login(user));
+  };
+  //Clean all auth states
+  useEffect(() => {
+    dispatch(reset());
+  }, [dispatch]);
   return (
     <html>
       <body className={styles.Background}>
@@ -46,40 +60,42 @@ export const Login = ({ info, img, src, alt, inputType }) => {
                 <h3>or</h3>
                 <span className={styles.line}></span>
               </div>
-             <form className={styles.infosLogin} >
-               <input
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                type="text"
-                info=""
-                id=""
-                className={styles.inputTextLogin}
-                placeholder="Seu email"
-              />
-              <input
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                type="password"
-                info=""
-                id=""
-                className={styles.inputTextLogin}
-                placeholder="Sua senha"
-              />
-              <section className={styles.saveAndForget}>
-                <div className={styles.save}>
-                  <input type="checkbox" name="" id="" />
-                  <p>Salve minha conta</p>
-                </div>
-                <a href="#">
-                  <p>Esqueci a senha</p>
-                </a>
-              </section>
-              <div className={styles.erro}></div>
-             {/*  <input type="send" className={styles.loginButton} onClick={validate}>
-                Login
-              /> */}
-              <input type="submit" className={styles.loginButton} ></input>
-             </form>
+              <form className={styles.infosLogin} onSubmit={handleSubmit}>
+                <input
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  type="text"
+                  info=""
+                  id=""
+                  className={styles.inputTextLogin}
+                  placeholder="Seu email"
+                />
+                <input
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  type="password"
+                  info=""
+                  id=""
+                  className={styles.inputTextLogin}
+                  placeholder="Sua senha"
+                />
+                <section className={styles.saveAndForget}>
+                  <div className={styles.save}>
+                    <input type="checkbox" name="" id="" />
+                    <p>Salve minha conta</p>
+                  </div>
+                  <a href="#">
+                    <p>Esqueci a senha</p>
+                  </a>
+                </section>
+                <div className={styles.erro}></div>
+
+                {!loading && (
+                  <input type="submit" className={styles.loginButton}></input>
+                )}
+                {loading && <input type="submit" disabled value="Aguarde..." />}
+                {error && <Message msg={error} type="error" />}
+              </form>
             </div>
             <div className={styles.imgLogin}>
               <svg
