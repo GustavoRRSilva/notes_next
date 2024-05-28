@@ -7,12 +7,16 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "server":"json-server --watch ./src/data/db.json"
+    "server": "json-server --watch ./src/data/db.json"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.2.5",
+    "axios": "^1.6.8",
     "json-server": "^1.0.0-alpha.23",
     "next": "14.1.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-redux": "^9.1.2",
+    "redux": "^5.0.1"
   }
 }

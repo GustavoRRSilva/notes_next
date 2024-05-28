@@ -1,9 +1,10 @@
 import "@/styles/globals.css";
-import { EmailPasswordContextProvider } from "@/context/EmailPasswordContext";
+import { Provider } from "react-redux";
+import { store } from "@/store";
 export default function App({ Component, pageProps }) {
   return (
-    <EmailPasswordContextProvider>
+    <Provider store={store}>
       <Component {...pageProps} />
-    </EmailPasswordContextProvider>
+    </Provider>
   );
 }

@@ -1,22 +1,16 @@
-import { Login } from "./Login";
-import { useFetch } from "@/hooks/useFetch";
+import { Login } from "./auth/Login";
 useEffect;
-import { useEmailPasswordContext } from "@/hooks/useEmailPasswordContext";
 import PageNotes from "./PageNotes";
 import { useEffect, useState } from "react";
 export default function Home() {
-  const { loggedEmail, loggedPassword, loggedName } = useEmailPasswordContext();
-  const [pagina, setPagina] = useState();
+  const loggedName = "";
+  const [pagina,setPagina] = useState("")
   useEffect(() => {
-    if (loggedEmail) {
+    if (loggedName) {
       setPagina(<PageNotes />);
     } else {
       setPagina(<Login />);
     }
   }, [loggedName]);
-  return (
-    <>
-      {pagina}
-    </>
-  );
+  return <>{pagina}</>;
 }
