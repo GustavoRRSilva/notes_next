@@ -1,4 +1,5 @@
 import { api, requestConfig } from "../utils/config";
+import { useUser } from "@/contexts/userContext";
 
 // Register a user
 const register = async (data) => {
@@ -26,7 +27,7 @@ const logout = () => {
 };
 
 // Sign in a user
-const login = async (data) => {
+const login = async (data, setToken) => {
   const config = requestConfig("POST", data);
 
   try {
@@ -35,6 +36,7 @@ const login = async (data) => {
     console.log(result)
     if (res.ok) {
       localStorage.setItem("user", JSON.stringify(result));
+     
       return result;
     } else {
       return { errors: [result.errors || "Erro desconhecido"] };
