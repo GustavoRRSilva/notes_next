@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import userService from "@/service/userService";
-
+import { useUser } from "@/contexts/userContext";
 const initialState = {
   user: {},
   error: false,
@@ -11,16 +11,17 @@ const initialState = {
 
 // Get user details, for edit data
 export const profile = createAsyncThunk(
-  "user/profile",
+  
+  "user/profile/",
   async (user, thunkAPI) => {
-    const token = thunkAPI.getState().auth.user.token;
+    const {token} = useUser();
 
     const data = await userService.profile(user, token);
 
     console.log(data);
-
     return data;
   }
+  
 );
 
 // Update user details
@@ -44,14 +45,15 @@ export const updateProfile = createAsyncThunk(
 
 // Get user details
 export const getUserDetails = createAsyncThunk(
-  "users/profile",
+  "users/profile/",
   async (id, thunkAPI) => {
-    const token = thunkAPI.getState().auth.user.token;
+    const localStorageToken = localStorage.getItem("user");
 
-    const data = await userService.getUserDetails(id, token);
+    // Parse JSON string
+    const jsonData = JSON.parse(localStorageToken);
 
-    console.log(data);
-
+    const token = jsonData.token;
+    const data = await userService.getUserDetails(token);
     return data;
   }
 );

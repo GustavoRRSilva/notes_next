@@ -27,7 +27,7 @@ const logout = () => {
 };
 
 // Sign in a user
-const login = async (data, setToken) => {
+const login = async (data) => {
   const config = requestConfig("POST", data);
 
   try {
