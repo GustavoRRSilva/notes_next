@@ -28,15 +28,15 @@ const logout = () => {
 
 // Sign in a user
 const login = async (data) => {
-  const config = requestConfig("POST", data);
+  const config = requestConfig("POST", " ", data);
 
   try {
     const res = await fetch(api + "/users/login", config);
     const result = await res.json();
-    console.log(result)
+    console.log(config);
     if (res.ok) {
       localStorage.setItem("user", JSON.stringify(result));
-     
+
       return result;
     } else {
       return { errors: [result.errors || "Erro desconhecido"] };

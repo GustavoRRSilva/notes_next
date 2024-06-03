@@ -21,7 +21,7 @@ export const Login = ({ info, img, src, alt, inputType }) => {
       email,
       password,
     };
-
+    console.log(user)
     dispatch(login(user));
     router.push("/PageNotes");
   };

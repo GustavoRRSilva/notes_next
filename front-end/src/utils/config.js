@@ -5,21 +5,17 @@ export const requestConfig = (method, token = null, data, image = null) => {
   let config;
 
   if (image) {
-    
     config = {
-      
       method: method,
       body: data,
       headers: {},
     };
   } else if (method === "DELETE") {
-    
     config = {
       method: method,
       headers: {},
     };
   } else {
-
     config = {
       method: method,
       body: JSON.stringify(data),
