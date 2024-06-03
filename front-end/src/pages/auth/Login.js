@@ -14,16 +14,20 @@ export const Login = ({ info, img, src, alt, inputType }) => {
   const dispatch = useDispatch();
   const { loading, error } = useSelector((state) => state.auth);
   console.log(error);
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const user = {
       email,
       password,
     };
-    console.log(user)
-    dispatch(login(user));
-    router.push("/PageNotes");
+    const resultAction = await dispatch(login(user));
+  
+    if (login.fulfilled.match(resultAction)) {
+      router.push("/PageNotes");
+    } else {
+      console.error('Login failed:', resultAction.error.message);
+    }
   };
   //Clean all auth states
   useEffect(() => {
