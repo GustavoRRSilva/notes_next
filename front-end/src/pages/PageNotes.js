@@ -4,12 +4,45 @@ import { useSelector } from "react-redux";
 import { useUser } from "@/contexts/userContext";
 import { useEffect } from "react";
 import { getUserDetails } from "@/slice/userSlice";
+import { getUserNotes } from "@/slice/notesSlice";
 export default function PageNotes() {
+  const fetchNotas = async () => {
+    const url = "http://localhost:5000/api/notes";
+    const localStorageToken = localStorage.getItem("user");
+
+    // Parse JSON string
+    const jsonData = JSON.parse(localStorageToken);
+
+    const token = jsonData.token;
+
+    fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Erro: ${response.status} - ${response.statusText}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Erro:", error);
+      });
+  };
+
   const { user, loading } = useSelector((state) => state.user);
+  const { notes, error } = useSelector((state) => state.notes);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUserDetails());
-  }, []);
+    dispatch(getUserNotes());
+  }, [dispatch]);
+  console.log(notes[0])
   return (
     <div className={styles.contentNext}>
       <section className={styles.notesLeft}>
@@ -36,6 +69,15 @@ export default function PageNotes() {
       </section>
       <section className={styles.notasUser}>
         <h2>Notas do(a) {user.name}!</h2>
+        <div className={styles.notas}>
+          <div className={styles.nota}>
+            <p className={styles.infoNota}>lalalalalalalal</p>
+            <div className={styles.dataAndChange}>
+              <p className={styles.data}>30 Fevereiro 2024</p>
+              <button className={styles.change}>rosa</button>
+            </div>
+          </div>
+        </div>
         <div className={styles.notas}>
           <div className={styles.nota}>
             <p className={styles.infoNota}>lalalalalalalal</p>

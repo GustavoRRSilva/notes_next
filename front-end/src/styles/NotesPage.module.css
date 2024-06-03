@@ -46,3 +46,15 @@
     border-radius: 100%;
     border:none;
 }
+
+@media screen and (max-width:600px){
+  .nota{
+    width: 100%;
+    max-width: 100%;
+  }
+}
+@media screen and (min-width:601px){
+  .nota{
+    width: 50%;
+  }
+}

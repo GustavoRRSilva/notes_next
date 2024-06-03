@@ -46,7 +46,7 @@ export const updateProfile = createAsyncThunk(
 // Get user details
 export const getUserDetails = createAsyncThunk(
   "users/profile/",
-  async (id, thunkAPI) => {
+  async () => {
     const localStorageToken = localStorage.getItem("user");
 
     // Parse JSON string
