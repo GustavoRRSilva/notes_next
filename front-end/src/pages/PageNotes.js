@@ -6,34 +6,7 @@ import { useEffect } from "react";
 import { getUserDetails } from "@/slice/userSlice";
 import { getUserNotes } from "@/slice/notesSlice";
 export default function PageNotes() {
-  const fetchNotas = async () => {
-    const url = "http://localhost:5000/api/notes";
-    const localStorageToken = localStorage.getItem("user");
-
-    // Parse JSON string
-    const jsonData = JSON.parse(localStorageToken);
-
-    const token = jsonData.token;
-
-    fetch(url, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Erro: ${response.status} - ${response.statusText}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error("Erro:", error);
-      });
-  };
+ 
 
   const { user, loading } = useSelector((state) => state.user);
   const { notes, error } = useSelector((state) => state.notes);
