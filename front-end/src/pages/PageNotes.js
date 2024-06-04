@@ -1,21 +1,17 @@
 import styles from "@/styles/NotesPage.module.css";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { useUser } from "@/contexts/userContext";
 import { useEffect } from "react";
 import { getUserDetails } from "@/slice/userSlice";
 import { getUserNotes } from "@/slice/notesSlice";
+import NotesContainer from "@/Componentes/NotesContainer";
 export default function PageNotes() {
- 
-
   const { user, loading } = useSelector((state) => state.user);
-  const { notes, error } = useSelector((state) => state.notes);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUserDetails());
     dispatch(getUserNotes());
   }, [dispatch]);
-  console.log(notes[0])
   return (
     <div className={styles.contentNext}>
       <section className={styles.notesLeft}>
@@ -40,7 +36,10 @@ export default function PageNotes() {
           </svg>
         </div>
       </section>
-      <section className={styles.notasUser}>
+      <NotesContainer>
+
+      </NotesContainer>
+      {/*  <section className={styles.notasUser}>
         <h2>Notas do(a) {user.name}!</h2>
         <div className={styles.notas}>
           <div className={styles.nota}>
@@ -60,7 +59,7 @@ export default function PageNotes() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

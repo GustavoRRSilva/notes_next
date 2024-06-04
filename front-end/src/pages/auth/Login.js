@@ -6,14 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "@/Componentes/Message/message";
 import { useRouter } from "next/router";
 import { useUser } from "@/contexts/userContext";
-export const Login = ({ info, img, src, alt, inputType }) => {
+export const Login = ({  }) => {
   const router = useRouter();
-  const { setToken } = useUser();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const dispatch = useDispatch();
   const { loading, error } = useSelector((state) => state.auth);
-  console.log(error);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
