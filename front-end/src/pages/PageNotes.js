@@ -2,16 +2,23 @@ import styles from "@/styles/NotesPage.module.css";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import Router from "next/router";
 import { getUserDetails } from "@/slice/userSlice";
 import { getUserNotes } from "@/slice/notesSlice";
 import NotesContainer from "@/Componentes/NotesContainer";
 export default function PageNotes() {
   const { user, loading } = useSelector((state) => state.user);
+
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getUserDetails());
     dispatch(getUserNotes());
   }, [dispatch]);
+
+  if (loading) {
+    return <p>Carregando</p>;
+  }
   return (
     <div className={styles.contentNext}>
       <section className={styles.notesLeft}>
@@ -35,31 +42,23 @@ export default function PageNotes() {
             />
           </svg>
         </div>
+        <div className= {styles.addButton}> 
+          <svg
+            width="59"
+            height="60"
+            viewBox="0 0 59 60"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="29.5" cy="29.5" r="29.5" fill="#E4C5C4" />
+            <path
+              d="M39.48 31.48H31.4V39.76H27.16V31.48H19.08V27.64H27.16V19.36H31.4V27.64H39.48V31.48Z"
+              fill="black"
+            />
+          </svg>
+        </div>
       </section>
-      <NotesContainer>
-
-      </NotesContainer>
-      {/*  <section className={styles.notasUser}>
-        <h2>Notas do(a) {user.name}!</h2>
-        <div className={styles.notas}>
-          <div className={styles.nota}>
-            <p className={styles.infoNota}>lalalalalalalal</p>
-            <div className={styles.dataAndChange}>
-              <p className={styles.data}>30 Fevereiro 2024</p>
-              <button className={styles.change}>rosa</button>
-            </div>
-          </div>
-        </div>
-        <div className={styles.notas}>
-          <div className={styles.nota}>
-            <p className={styles.infoNota}>lalalalalalalal</p>
-            <div className={styles.dataAndChange}>
-              <p className={styles.data}>30 Fevereiro 2024</p>
-              <button className={styles.change}>rosa</button>
-            </div>
-          </div>
-        </div>
-      </section> */}
+      <NotesContainer />
     </div>
   );
 }

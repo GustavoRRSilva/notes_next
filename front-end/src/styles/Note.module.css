@@ -48,4 +48,8 @@
   width: 55px;
   border: none;
   margin: 0px 3px;
+  border: 2px solid black;
+}
+.change svg{
+   width: 70%;
 }

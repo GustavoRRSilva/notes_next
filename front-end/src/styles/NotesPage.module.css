@@ -8,15 +8,21 @@
   padding: 20px;
   gap: 20px;
   height: auto;
-  
+  min-height: 100vh;
 }
 .notesLeft {
   width: 100%;
   max-width: 150px;
 }
 
+.addButton {
+  margin: 20px auto;
+  width: 40%;
+}
 
-
+.addButton:hover{
+  cursor: pointer;
+}
 @media screen and (max-width:600px){
   .nota{
     width: 100%;
