@@ -3,6 +3,7 @@
 }
 
 .contentNext {
+  position: absolute;
   background-color: #c8ad8d;
   display: flex;
   padding: 20px;
@@ -19,7 +20,10 @@
   margin: 20px auto;
   width: 40%;
 }
-
+.post{
+  position: relative;
+  top: 50%;
+}
 .addButton:hover{
   cursor: pointer;
 }

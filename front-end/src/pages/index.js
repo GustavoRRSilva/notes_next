@@ -13,5 +13,6 @@ export default function Home() {
       setPagina(<Login />);
     }
   }, [loggedName]);
-  return <>{pagina}</>;
+  return <>
+  {pagina}</>;
 }

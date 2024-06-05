@@ -1,0 +1,63 @@
+.form {
+  background-color: #6f7357;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  height: 50%;
+  width: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  border: 2px solid white;
+}
+.form input[type = text] {
+  width: 100%;
+  padding: 10px;
+  background-color: #6f7357;
+  height: 100%;
+  color: #ffffff;
+  height: 90%;
+  min-width: 300px;
+}
+
+.form input[type = text]{
+    font-size: 2em;
+    color: white;
+    text-align: center;
+    border: none;
+    word-break: break-all;
+    outline: none;
+}
+.form input[type = text]::placeholder{
+    color: rgba(255, 255, 255, 0.5);
+   
+}
+
+.form input[type = submit]{
+  width: 50%;
+  margin: auto;
+  height: 8%;
+  margin-bottom: 10px;
+  background-color: #E4C5C4;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+.form input[type = submit]:hover{
+  cursor: pointer;
+}
+.message{
+  text-align: center;
+  height: max-content;
+  margin-bottom: 10px;
+  color: white;
+  font-size: 1.2em;
+  background-color: #a51a41;
+  width: max-content;
+  margin: 0px auto 10px;
+  padding: 8px;
+  border: 5px;
+}

@@ -10,7 +10,6 @@ export default function Notes(props) {
       className={styles.nota}
       style={{ backgroundColor: getRandomColor() }}
     >
-      <p className={styles.infoNota}>{props.title}</p>
       <p className={styles.content}>{props.content}</p>
       <div className={styles.dataAndChange}>
         <p className={styles.data}>{props.data}</p>

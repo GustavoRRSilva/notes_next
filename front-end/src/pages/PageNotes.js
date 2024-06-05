@@ -2,6 +2,7 @@ import styles from "@/styles/NotesPage.module.css";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import PostNote from "@/Componentes/PostNote";
 import Router from "next/router";
 import { getUserDetails } from "@/slice/userSlice";
 import { getUserNotes } from "@/slice/notesSlice";
@@ -21,6 +22,7 @@ export default function PageNotes() {
   }
   return (
     <div className={styles.contentNext}>
+      <PostNote styles = {styles.post}/>
       <section className={styles.notesLeft}>
         <div className={styles.logoNotes}>
           <svg
@@ -42,7 +44,7 @@ export default function PageNotes() {
             />
           </svg>
         </div>
-        <div className= {styles.addButton}> 
+        <div className={styles.addButton}>
           <svg
             width="59"
             height="60"

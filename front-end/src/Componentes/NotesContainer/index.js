@@ -14,7 +14,6 @@ export default function NotesContainer(props) {
         notes.map((note) => (
           <Note
             key={note.key} // Aqui a chave é passada diretamente
-            title={note.title}
             content={note.content}
             data={note.data}
           />

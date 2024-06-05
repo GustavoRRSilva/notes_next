@@ -5,29 +5,28 @@
 .infoNota {
   margin-top: 10px;
   font-size: 1.2em;
-  
 }
-.content{
-    max-height: 200px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 1.4em;
-    padding: 0 5px;
-    font-size: 0.9em;
-    font-weight: normal;
+.content {
+  max-height: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4em;
+  padding: 0 5px;
+  font-size: 0.9em;
+  font-weight: normal;
 }
 .nota {
   width: 100%;
   max-width: 30%;
   background-color: #6f7357;
   height: 100%;
-  color: #FFFFFF;
- height: 300px;
+  color: #ffffff;
+  height: 200px;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-width: 300px;
+  min-width: 200px;
 }
 .nota p {
   text-align: center;
@@ -50,6 +49,9 @@
   margin: 0px 3px;
   border: 2px solid black;
 }
-.change svg{
-   width: 70%;
+.change svg {
+  width: 70%;
+}
+.content {
+  margin: auto;
 }
