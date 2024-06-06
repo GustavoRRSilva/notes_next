@@ -1,20 +1,19 @@
 .message {
   border-radius: 5px;
-  padding: 5px 10px;
   position: relative;
-  margin: 0;
+  padding: 5px 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-
   box-sizing: border-box;
   background-color: #a51a41;
   width: max-content;
-  height: 25px;
-  margin: auto;
   color: #f5c6cb;
 }
-
+.message p {
+  width: max-content;
+  height: max-content;
+}
 .error {
   color: #721c24;
 

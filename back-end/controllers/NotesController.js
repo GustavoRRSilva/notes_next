@@ -13,13 +13,12 @@ const mongoose = require("mongoose");
     */
 
 const insertNote = async (req, res) => {
-  const { title, content } = req.body;
-
+  const { content } = req.body;
+  
   const reqUser = req.user;
   const user = await User.findById(reqUser._id);
 
   const newNote = await Note.create({
-    title,
     content,
     userId: user._id,
     userName: user.name,
@@ -73,7 +72,7 @@ const deleteNote = async (req, res) => {
 
 const editNote = async (req, res) => {
   const { id } = req.params;
-  const { title, content } = req.body;
+  const { content } = req.body;
   const reqUser = req.user;
   const note = Note.findById(id);
 
@@ -106,9 +105,9 @@ const editNote = async (req, res) => {
   }
 };
 
-const searchNoteByTitle = async (req, res) => {
+const searchNoteByContent = async (req, res) => {
   const { q } = req.query;
-  const notes = await Note.find({ title: new RegExp(q, "i") }).exec();
+  const notes = await Note.find({ content: new RegExp(q, "i") }).exec();
   res.status(200).json(notes);
 };
 module.exports = {
@@ -117,5 +116,5 @@ module.exports = {
   getIndividualNote,
   deleteNote,
   editNote,
-  searchNoteByTitle,
+  searchNoteByContent,
 };

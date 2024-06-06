@@ -3,7 +3,6 @@
 }
 
 .contentNext {
-  position: absolute;
   background-color: #c8ad8d;
   display: flex;
   padding: 20px;
@@ -12,6 +11,7 @@
   min-height: 100vh;
 }
 .notesLeft {
+
   width: 100%;
   max-width: 150px;
 }
@@ -20,12 +20,12 @@
   margin: 20px auto;
   width: 40%;
 }
-.post{
-  position: relative;
-  top: 50%;
-}
+
 .addButton:hover{
   cursor: pointer;
+}
+.post{
+  display: none;
 }
 @media screen and (max-width:600px){
   .nota{

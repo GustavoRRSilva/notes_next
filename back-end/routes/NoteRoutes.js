@@ -18,7 +18,7 @@ const {
   getIndividualNote,
   deleteNote,
   editNote,
-  searchNoteByTitle
+  searchNoteByContent
 } = require("../controllers/NotesController.js");
 
 //Middlewares
@@ -36,5 +36,5 @@ router.get("/", authGuard, getAllUserNotes);
 router.get("/view/:id", authGuard, getIndividualNote);
 router.delete("/:id", authGuard, validate, deleteNote);
 router.put("/:id", authGuard, editNoteValidation(), validate, editNote);
-router.get("/search",authGuard,searchNoteByTitle)
+router.get("/search",authGuard,searchNoteByContent)
 module.exports = router;

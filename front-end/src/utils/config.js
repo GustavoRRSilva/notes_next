@@ -3,7 +3,6 @@ export const uploads = "http://localhost:5000/uploads";
 
 export const requestConfig = (method, token = null, data, note = null) => {
   let config;
-  console.log(method, token, data, note);
   if (note) {
     config = {
       method: method,
@@ -23,12 +22,10 @@ export const requestConfig = (method, token = null, data, note = null) => {
         "Content-Type": "application/json",
       },
     };
-    console.log(config.body);
   }
 
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
-  console.log(config);
   return config;
 };

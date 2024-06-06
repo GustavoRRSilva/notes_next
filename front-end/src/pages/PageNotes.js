@@ -1,7 +1,7 @@
 import styles from "@/styles/NotesPage.module.css";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import PostNote from "@/Componentes/PostNote";
 import Router from "next/router";
 import { getUserDetails } from "@/slice/userSlice";
@@ -9,9 +9,15 @@ import { getUserNotes } from "@/slice/notesSlice";
 import NotesContainer from "@/Componentes/NotesContainer";
 export default function PageNotes() {
   const { user, loading } = useSelector((state) => state.user);
-
+  const [showPost,setShowPost] = useState("");
   const dispatch = useDispatch();
-
+  const openShowPost = () => {
+    if (showPost) {
+      setShowPost(false)
+    } else {
+      setShowPost(true)
+    }
+  };
   useEffect(() => {
     dispatch(getUserDetails());
     dispatch(getUserNotes());
@@ -22,7 +28,7 @@ export default function PageNotes() {
   }
   return (
     <div className={styles.contentNext}>
-      <PostNote styles = {styles.post}/>
+      {showPost && <PostNote></PostNote>}
       <section className={styles.notesLeft}>
         <div className={styles.logoNotes}>
           <svg
@@ -44,7 +50,7 @@ export default function PageNotes() {
             />
           </svg>
         </div>
-        <div className={styles.addButton}>
+        <div className={styles.addButton} onClick={openShowPost}>
           <svg
             width="59"
             height="60"
