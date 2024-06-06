@@ -1,6 +1,6 @@
 import { useUser } from "@/contexts/userContext";
 import { api, requestConfig } from "@/utils/config";
-
+import { useState } from "react";
 const getNotes = async (token) => {
   const config = requestConfig("GET", token);
   try {
@@ -28,11 +28,11 @@ const postNote = async (note) => {
       body: JSON.stringify(note),
     });
 
-    if (!response.ok) {
-      throw new Error("Failed to post note");
-    }
-
     const data = await response.json();
+    if (!response.ok) {
+      console.log(data.errors)
+      return {errors: [data.errors]}
+    }
     return data;
   } catch (error) {
     throw error;

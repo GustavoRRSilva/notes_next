@@ -33,7 +33,7 @@ const login = async (data) => {
   try {
     const res = await fetch(api + "/users/login", config);
     const result = await res.json();
-    console.log(config);
+  
     if (res.ok) {
       localStorage.setItem("user", JSON.stringify(result));
 
@@ -42,6 +42,7 @@ const login = async (data) => {
       return { errors: [result.errors || "Erro desconhecido"] };
     }
   } catch (error) {
+
     console.error("Erro no login:", error);
     return { errors: [error.message || "Erro desconhecido"] };
   }

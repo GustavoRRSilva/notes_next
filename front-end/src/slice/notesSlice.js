@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import noteService from "@/service/notesService";
-
+import { useUser } from "@/contexts/userContext";
 const initialState = {
   notes: [],
   note: {},
@@ -18,14 +18,22 @@ export const getUserNotes = createAsyncThunk("notes/getUserNotes", async () => {
   return data;
 });
 
-export const postNote = createAsyncThunk("notes/postNote", async (note) => {
-  try {
-    const data = await noteService.postNote(note);
-    return data;
-  } catch (error) {
-    throw error; // Lança o erro para ser tratado no reducer
+export const postNote = createAsyncThunk(
+  "notes/postNote",
+  async (note, thunkAPI) => {
+    try {
+      const data = await noteService.postNote(note);
+      if (data.errors) {
+
+        return thunkAPI.rejectWithValue(data.errors[0]);
+      }
+      return data;
+    } catch (error) {
+      console.error(error);
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
-});
+);
 export const notesSlice = createSlice({
   name: "notes",
   initialState,
@@ -36,7 +44,7 @@ export const notesSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-    
+
       .addCase(postNote.fulfilled, (state, action) => {
         state.loading = false;
         state.success = true;

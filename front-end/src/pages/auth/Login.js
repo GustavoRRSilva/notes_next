@@ -102,7 +102,7 @@ export const Login = ({  }) => {
                   <input type="submit" className={styles.loginButton}></input>
                 )}
                 {loading && <input type="submit" disabled value="Aguarde..." />}
-                {error && <Message msg={error} type="error" />}
+                {error && <Message msg={error[0]} type="error" />}
               </form>
             </div>
             <div className={styles.imgLogin}>
