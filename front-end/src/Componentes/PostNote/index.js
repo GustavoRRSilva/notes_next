@@ -1,6 +1,6 @@
 import style from "./PostNote.module.css";
 import Message from "../Message/message";
-import {useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { postNote } from "@/slice/notesSlice";
@@ -14,7 +14,7 @@ export default function index(props) {
     const resultAction = await dispatch(postNote(nota));
 
     if (postNote.fulfilled.match(resultAction)) {
-      setError("");
+      setError("Nota enviada com sucesso!");
     } else {
       setError(resultAction.payload);
     }

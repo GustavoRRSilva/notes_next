@@ -6,8 +6,7 @@ import Note from "@/Componentes/Note/index";
 import style from "@/styles/NotesContainer.module.css";
 export default function NotesContainer(props) {
   const { notes, error } = useSelector((state) => state.notes);
-  const notas = [];
-  const contador = 0;
+
   return (
     <ul className={style.listNotes}>
       {notes &&

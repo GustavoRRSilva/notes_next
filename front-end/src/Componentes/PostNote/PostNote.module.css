@@ -21,6 +21,11 @@
   
 }
 
+.form div{
+  width: max-content;
+  max-height: 40px;
+  margin: 5px auto;
+}
 .form input[type = text]{
     font-size: 2em;
     color: white;
