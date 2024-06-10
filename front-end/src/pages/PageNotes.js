@@ -1,26 +1,37 @@
+// Importando estilos específicos para a página de notas
 import styles from "@/styles/NotesPage.module.css";
+
+// Importando hooks do React Redux
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+
+// Importando hooks do React
 import { useEffect, useState } from "react";
+
+// Importando componente para postar uma nova nota
 import PostNote from "@/Componentes/PostNote";
-import Router from "next/router";
+
+// Importando ações para obter detalhes do usuário e notas
 import { getUserDetails } from "@/slice/userSlice";
 import { getUserNotes } from "@/slice/notesSlice";
+
+// Importando container que exibe todas as notas
 import NotesContainer from "@/Componentes/NotesContainer";
+
+
+
 export default function PageNotes() {
   const { user, loading } = useSelector((state) => state.user);
-  const [showPost,setShowPost] = useState("");
+  const [showPost, setShowPost] = useState(false);
+  const [showNotes, setShowNotes] = useState(false);
   const dispatch = useDispatch();
   const openShowPost = () => {
-    if (showPost) {
-      setShowPost(false)
-    } else {
-      setShowPost(true)
-    }
+    setShowPost((prevShowPost) => !prevShowPost); // Alterna o estado showPost
   };
   useEffect(() => {
     dispatch(getUserDetails());
     dispatch(getUserNotes());
+    setShowNotes(true);
   }, [dispatch]);
 
   if (loading) {
@@ -66,7 +77,7 @@ export default function PageNotes() {
           </svg>
         </div>
       </section>
-      <NotesContainer />
+      {showNotes && <NotesContainer />}
     </div>
   );
 }

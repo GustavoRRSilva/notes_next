@@ -6,6 +6,29 @@
   margin-top: 10px;
   font-size: 1.2em;
 }
+.NotaOpen {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 50vw !important;
+  max-width: 50vw !important;
+  height: 25vw !important;
+  border: 2px solid white;
+}
+
+.NotaOpen input::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.5em;
+}
+.NotaOpen input {
+  color: white;
+  font-size: 1.5em;
+  border: none;
+  outline: none;
+  padding: 5px;
+}
+
 .content {
   max-height: 200px;
   overflow: hidden;
@@ -15,7 +38,23 @@
   font-size: 0.9em;
   font-weight: normal;
 }
-.nota {
+
+.enviarNota {
+  width: 50% !important;
+  border-radius: 0 !important;
+  margin: auto !important;
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 1.3em;
+  font-weight: bold;
+  border-radius: 5px !important;
+  border: 2px solid #d68582 !important;
+}
+
+.nota,
+.NotaOpen {
   width: 100%;
   max-width: 400px;
   background-color: #6f7357;
@@ -28,19 +67,27 @@
   flex-direction: column;
   justify-content: space-between;
 }
-.nota p {
+
+.change:hover {
+  cursor: pointer;
+}
+.nota p,
+.NotaOpen p {
   text-align: center;
   height: max-content;
   overflow-wrap: break-word;
 }
-.nota .dataAndChange {
+.nota .dataAndChange,
+.NotaOpen .dataAndChange {
   display: flex;
   height: max-content;
 }
 .dataAndChange {
   margin-bottom: 10px;
+ 
 }
-.nota button {
+.nota button,
+.NotaOpen button {
   border-radius: 100%;
   background-color: #e4c5c4;
   height: 50px;

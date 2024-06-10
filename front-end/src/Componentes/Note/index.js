@@ -1,19 +1,41 @@
 import styles from "@/styles/Note.module.css";
+import { useState } from "react";
 export default function Notes(props) {
-  const colors = ["#6F7357", "#273A2D", "#a85163", "#2c2b4b"]; 
+  const colors = ["#6F7357", "#273A2D", "#a85163", "#2c2b4b"];
   const getRandomColor = () => {
     return colors[Math.floor(Math.random() * colors.length)];
+  };
+  const [buttonClass, setButtonClass] = useState(styles.nota);
+  const [inputColor, setInputColor] = useState(getRandomColor()); // Estado para armazenar a cor de fundo do input
+
+  const handleChangeInputColor = (event) => {
+    setInputColor(event.target.value); // Atualiza a cor de fundo do input com o valor digitado pelo usuário
+  };
+  const handleChangeInput = (event) => {};
+
+  const handleChange = () => {
+    setButtonClass((prevClass) =>
+      prevClass === styles.nota ? styles.NotaOpen : styles.nota
+    );
   };
   return (
     <li
       key={props.key}
-      className={styles.nota}
-      style={{ backgroundColor: getRandomColor() }}
+      className={buttonClass}
+      style={{ backgroundColor: inputColor }}
     >
-      <p className={styles.content}>{props.content}</p>
+      {buttonClass && buttonClass == styles.nota ? (
+        <p className={styles.content}>{props.content}</p>
+      ) : (
+        <input
+          placeholder={props.content}
+          style={{backgroundColor:inputColor}}
+          onChange={handleChangeInput} // Associa o
+        />
+      )}
       <div className={styles.dataAndChange}>
         <p className={styles.data}>{props.data}</p>
-        <button className={styles.change}>
+       {buttonClass && buttonClass == styles.nota ? ( <button className={styles.change} onClick={handleChange}>
           <svg
             width="23"
             height="23"
@@ -33,7 +55,7 @@ export default function Notes(props) {
               </clipPath>
             </defs>
           </svg>
-        </button>
+        </button>) : (<button className={styles.enviarNota}>Enviar nota</button>)}
       </div>
     </li>
   );
