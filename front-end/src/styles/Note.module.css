@@ -17,6 +17,22 @@
   border: 2px solid white;
 }
 
+.close{
+  position: fixed; 
+  top: 5%;
+  left: 95%;
+  color: white;
+  background-color: red;
+  width: max-content;
+  height: max-content;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.close:hover{
+  cursor: pointer;
+}
+
 .NotaOpen input::placeholder {
   color: rgba(255, 255, 255, 0.8);
   font-size: 1.5em;
