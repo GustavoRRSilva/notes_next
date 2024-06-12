@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import noteService from "@/service/notesService";
 import { useUser } from "@/contexts/userContext";
+
 const initialState = {
   notes: [],
   note: {},
@@ -24,7 +25,6 @@ export const postNote = createAsyncThunk(
     try {
       const data = await noteService.postNote(note);
       if (data.errors) {
-
         return thunkAPI.rejectWithValue(data.errors[0]);
       }
       return data;
@@ -34,6 +34,40 @@ export const postNote = createAsyncThunk(
     }
   }
 );
+
+export const updateNote = createAsyncThunk(
+  "notes/updateNote",
+  async ({ id, note }, thunkAPI) => {
+    try {
+      const data = await noteService.updateNote(id, note);
+      if (data.errors) {
+        return thunkAPI.rejectWithValue(data.errors[0]);
+      }
+      return data;
+    } catch (error) {
+      console.error(error);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteNote = createAsyncThunk(
+  "notes/deleteNote",
+  async ({ id, note }, thunkAPI) => {
+    try {
+      const data = await noteService.deleteNote(id, note);
+
+      if (data.errors) {
+        return thunkAPI.rejectWithValue(data.errors[0]);
+      }
+      return data;
+    } catch (error) {
+      console.error(error);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const notesSlice = createSlice({
   name: "notes",
   initialState,
@@ -44,7 +78,6 @@ export const notesSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-
       .addCase(postNote.fulfilled, (state, action) => {
         state.loading = false;
         state.success = true;
@@ -67,6 +100,23 @@ export const notesSlice = createSlice({
         state.notes = action.payload;
       })
       .addCase(getUserNotes.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(updateNote.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        state.error = null;
+        state.message = "Nota atualizada com sucesso!";
+        // Atualiza a nota no estado
+        const index = state.notes.findIndex(
+          (note) => note.id === action.payload.id
+        );
+        if (index !== -1) {
+          state.notes[index] = action.payload;
+        }
+      })
+      .addCase(updateNote.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });

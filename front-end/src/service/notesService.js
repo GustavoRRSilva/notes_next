@@ -39,9 +39,55 @@ const postNote = async (note) => {
   }
 };
 
+const deleteNote = async(id) =>{
+  try{
+    const localStorageToken = localStorage.getItem("user");
+    const jsonData = JSON.parse(localStorageToken);
+    const token = jsonData.token;
+
+    const config = requestConfig("DELETE",token);
+    const response = await fetch(`${api}/notes/${id}`, config);
+    const data = await response.json();
+
+    if (!response.ok) {
+      console.log(data.errors);
+      return { errors: [data.errors] };
+    }
+    return data;
+  } catch (error) {
+    throw error;
+  }
+  }
+
+
+
+const updateNote = async (id, note) => {
+  try {
+    const localStorageToken = localStorage.getItem("user");
+    const jsonData = JSON.parse(localStorageToken);
+    const token = jsonData.token;
+
+    const config = requestConfig("PUT", token, note);
+
+    const response = await fetch(`${api}/notes/${id}`, config);
+    const data = await response.json();
+
+    if (!response.ok) {
+      console.log(data.errors);
+      return { errors: [data.errors] };
+    }
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+
 const noteService = {
   getNotes,
   postNote,
+  updateNote,
+  deleteNote
 };
 
 export default noteService;

@@ -17,12 +17,13 @@ import { getUserNotes } from "@/slice/notesSlice";
 
 // Importando container que exibe todas as notas
 import NotesContainer from "@/Componentes/NotesContainer";
-
+import AlertDeleteNote from "@/Componentes/AlertDeleteNote";
 
 
 export default function PageNotes() {
   const { user, loading } = useSelector((state) => state.user);
   const [showPost, setShowPost] = useState(false);
+  const [showAlertDelete, setShowAlertDelete] = useState(false);
   const [showNotes, setShowNotes] = useState(false);
   const dispatch = useDispatch();
   const openShowPost = () => {
@@ -40,6 +41,7 @@ export default function PageNotes() {
   return (
     <div className={styles.contentNext}>
       {showPost && <PostNote></PostNote>}
+      
       <section className={styles.notesLeft}>
         <div className={styles.logoNotes}>
           <svg

@@ -74,10 +74,10 @@ const editNote = async (req, res) => {
   const { id } = req.params;
   const { content } = req.body;
   const reqUser = req.user;
-  const note = Note.findById(id);
 
   try {
     const note = await Note.findById(id);
+    
 
     if (!note) {
       res.status(404).json({ errors: ["Nota não encontrada"] });
@@ -89,9 +89,7 @@ const editNote = async (req, res) => {
       return;
     }
 
-    if (title) {
-      note.title = title;
-    }
+    
 
     if (content) {
       note.content = content;

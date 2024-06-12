@@ -1,0 +1,48 @@
+.options {
+    background-color: #6f7357;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 50%;
+    width: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    border: 2px solid white;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .options h2{
+    height: max-content;
+  }
+  .options span{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .options button{
+    width: 40%;
+    height: 10%;
+    border-radius: 5px;
+    border: 1px solid white;
+    
+  }
+
+  .options div{
+    height: 20%;
+    padding: 0;
+  }
+  .options button:hover{
+    cursor: pointer;
+  }
+
+  .options button:nth-child(1){
+    background-color: #28a745;
+  }
+  .options button:nth-child(2){
+    background-color: #fd7e14;
+  }
