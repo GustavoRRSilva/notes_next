@@ -1,13 +1,13 @@
+
 /* Rotas: 
     Inicial=> '/' ✔️
     Criar uma nova rota (`/notes/new`) ✔️
-    Pesquisa de notas (`/search`)
-    Visualização de nota individual (`/notes/:id`)
-    Editar nota existente(`/notes/:id/edit`)
+    Pesquisa de notas (`/search`)✔️
+    Visualização de nota individual (`/notes/:id`)✔️
+    Editar nota existente(`/notes/:id/edit`)✔️
     Pegar todas as notas(`/notes/getNotes`)✔️
-    Deletar uma nota(`/notes/deleteNote`)
+    Deletar uma nota(`/notes/deleteNote`)✔️
     */
-
 const express = require("express");
 const router = express.Router();
 

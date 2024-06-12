@@ -1,6 +1,3 @@
-const Note = require("../models/Note");
-const User = require("../models/User");
-const mongoose = require("mongoose");
 
 /* Rotas: 
     Inicial=> '/' ✔️
@@ -11,6 +8,9 @@ const mongoose = require("mongoose");
     Pegar todas as notas(`/notes/getNotes`)✔️
     Deletar uma nota(`/notes/deleteNote`)✔️
     */
+const Note = require("../models/Note");
+const User = require("../models/User");
+const mongoose = require("mongoose");
 
 const insertNote = async (req, res) => {
   const { content } = req.body;
@@ -36,7 +36,7 @@ const getAllUserNotes = async (req, res) => {
   const user = req.user;
   const userId = user._id;
   const notes = await Note.find({ userId: userId })
-    .sort([["createdAt", -1]])
+    .sort([["createdAt", 1]])
     .exec();
   return res.status(200).json(notes);
 };

@@ -69,7 +69,7 @@ export const deleteNote = createAsyncThunk(
 );
 
 export const notesSlice = createSlice({
-  name: "notes",
+  name: 'notes',
   initialState,
   reducers: {
     resetMessage: (state) => {
@@ -82,7 +82,7 @@ export const notesSlice = createSlice({
         state.loading = false;
         state.success = true;
         state.error = null;
-        state.message = "Nota publicada com sucesso!";
+        state.message = 'Nota publicada com sucesso!';
         state.notes.push(action.payload); // Adiciona a nova nota ao estado
       })
       .addCase(postNote.rejected, (state, action) => {
@@ -107,7 +107,7 @@ export const notesSlice = createSlice({
         state.loading = false;
         state.success = true;
         state.error = null;
-        state.message = "Nota atualizada com sucesso!";
+        state.message = 'Nota atualizada com sucesso!';
         // Atualiza a nota no estado
         const index = state.notes.findIndex(
           (note) => note.id === action.payload.id
@@ -117,6 +117,18 @@ export const notesSlice = createSlice({
         }
       })
       .addCase(updateNote.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(deleteNote.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        state.error = null;
+        state.message = 'Nota deletada com sucesso!';
+        // Remove a nota do estado
+        state.notes = state.notes.filter((note) => note.id !== action.payload);
+      })
+      .addCase(deleteNote.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });

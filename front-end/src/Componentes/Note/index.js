@@ -1,12 +1,18 @@
-import styles from "@/styles/Note.module.css";
-import { useState } from "react";
+//React
 import { useDispatch } from "react-redux";
-import { updateNote } from "@/slice/notesSlice";
+import { useState,useEffect } from "react";
+
+//Styles
+import styles from "@/styles/Note.module.css";
+//Slices
+
+import { getUserNotes, updateNote } from "@/slice/notesSlice";
 import { deleteNote } from "@/slice/notesSlice";
-import Message from "../Message/message";
-import { useSelector } from "react-redux";
+
+//Component
 import AlertDeleteNote from "../AlertDeleteNote";
-export default function Notes({ id, content, data, key,message }) {
+
+export default function Notes({ id, content, data, key, message,atualizarNotas }) {
   const dispatch = useDispatch();
   const colors = ["#6F7357", "#273A2D", "#a85163", "#2c2b4b"];
   const [valueNewInput, setValueNewInput] = useState(content);
@@ -25,33 +31,11 @@ export default function Notes({ id, content, data, key,message }) {
     );
   };
 
-  async function deletarNote() {
-
-    dispatch(deleteNote({id}))
-    /* const url = `http://localhost:5000/api/notes/${id}`;
-
-    const localStorageToken = localStorage.getItem("user");
-    const jsonData = JSON.parse(localStorageToken);
-    const token = jsonData.token;
-
-    try {
-      const response = await fetch(url, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status}`);
-      }
-
-      const result = await response.json();
-      console.log("Note deleted successfully:", result);
-    } catch (error) {
-      console.error("Failed to delete note:", error);
-    } */
-  }
+  const deletarNote = () => {
+    dispatch(deleteNote({ id })).then(() => {
+      atualizarNotas();
+    });
+  };
   const toggleDeleteBox = () => {
     setOpenDeleteBox((openDeleteBox) => !openDeleteBox);
   };

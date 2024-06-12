@@ -4,10 +4,13 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { postNote } from "@/slice/notesSlice";
-export default function index(props) {
+
+
+export default function Index({ atualizarNotas }) {
   const dispatch = useDispatch();
   const [error, setError] = useState("");
   const [content, setContent] = useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const nota = { content };
@@ -15,6 +18,7 @@ export default function index(props) {
 
     if (postNote.fulfilled.match(resultAction)) {
       setError("Nota enviada com sucesso!");
+    
     } else {
       setError(resultAction.payload);
     }
@@ -27,9 +31,10 @@ export default function index(props) {
         placeholder="|Digite aqui a sua nota"
         value={content}
         onChange={(e) => setContent(e.target.value)}
-      ></input>
-      <input type="submit" value="Enviar nota"></input>
-      {error && <Message className={style.message} msg={error}></Message>}
+      />
+      <input type="submit" value="Enviar nota" />
+      {error && <Message className={style.message} msg={error} />}
     </form>
   );
 }
+

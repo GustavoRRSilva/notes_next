@@ -31,7 +31,6 @@ export default function PageNotes() {
   };
   useEffect(() => {
     dispatch(getUserDetails());
-    dispatch(getUserNotes());
     setShowNotes(true);
   }, [dispatch]);
 

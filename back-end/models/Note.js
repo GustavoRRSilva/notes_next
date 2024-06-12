@@ -6,7 +6,11 @@ const noteSchema = new Schema({
     content:String,
     userId: mongoose.ObjectId,
     userName:String,
-})
+},
+{
+    timestamps : true
+}
+)
 
 const note = mongoose.model("Note",noteSchema);
 
