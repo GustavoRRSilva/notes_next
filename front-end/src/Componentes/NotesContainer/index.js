@@ -15,6 +15,7 @@ export default function NotesContainer(props) {
   const atualizarNotas = () => {
     dispatch(getUserNotes());
   };
+  
   const reversedNotes = [...notes].reverse();
   return (
     <ul className={style.listNotes}>

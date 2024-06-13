@@ -1,34 +1,47 @@
-//React
 import { useDispatch } from "react-redux";
-import { useState,useEffect } from "react";
+import { useState } from "react";
 
 //Styles
 import styles from "@/styles/Note.module.css";
 //Slices
-
-import { getUserNotes, updateNote } from "@/slice/notesSlice";
-import { deleteNote } from "@/slice/notesSlice";
+import { updateNote, deleteNote } from "@/slice/notesSlice";
 
 //Component
 import AlertDeleteNote from "../AlertDeleteNote";
+import Message from "../Message/message";
 
-export default function Notes({ id, content, data, key, message,atualizarNotas }) {
+export default function Notes({
+  id,
+  content,
+  data,
+  key,
+  message,
+  atualizarNotas,
+}) {
   const dispatch = useDispatch();
   const colors = ["#6F7357", "#273A2D", "#a85163", "#2c2b4b"];
   const [valueNewInput, setValueNewInput] = useState(content);
   const [isOpen, setIsOpen] = useState(false);
   const [openDeleteBox, setOpenDeleteBox] = useState(false);
+  const [valueInput, setValueInput] = useState(content);
   const [inputColor] = useState(
     () => colors[Math.floor(Math.random() * colors.length)]
   );
 
   const handleChangeInputValue = () => {
-    dispatch(
-      updateNote({
-        id,
-        note: { content: valueNewInput },
-      })
-    );
+    if (valueInput.length > 5) {
+      setValueNewInput(valueInput);
+      dispatch(
+        updateNote({
+          id,
+          note: { content: valueInput },
+        })
+      ).then(() => {
+        atualizarNotas();
+      });
+    } else {
+      console.log("Error: input value must be greater than 5 characters");
+    }
   };
 
   const deletarNote = () => {
@@ -36,9 +49,11 @@ export default function Notes({ id, content, data, key, message,atualizarNotas }
       atualizarNotas();
     });
   };
+
   const toggleDeleteBox = () => {
     setOpenDeleteBox((openDeleteBox) => !openDeleteBox);
   };
+
   const toggleNote = () => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
   };
@@ -68,24 +83,30 @@ export default function Notes({ id, content, data, key, message,atualizarNotas }
       )}
 
       {isOpen ? (
-        <input
-          placeholder={content}
-          style={{ backgroundColor: inputColor }}
-          value={valueNewInput}
-          onChange={(e) => setValueNewInput(e.target.value)}
-        />
+        <div className={styles.inputErro}>
+          <input
+            placeholder={content}
+            style={{ backgroundColor: inputColor }}
+            value={valueInput}
+            onChange={(e) => setValueInput(e.target.value)}
+          />
+        </div>
       ) : (
         <p className={styles.content}>{valueNewInput}</p>
       )}
       <div className={styles.dataAndChange}>
-        <p className={styles.data}>{data}</p>
         {isOpen ? (
-          <button
-            className={styles.enviarNota}
-            onClick={handleChangeInputValue}
-          >
-            Trocar informações da nota
-          </button>
+          <div className={styles.inputErro}>
+            <button
+              className={styles.enviarNota}
+              onClick={handleChangeInputValue}
+            >
+              Trocar informações da nota
+            </button>
+            {valueInput.length <= 4 && (
+              <p>A nota tem que possuir 5 letras no minímo</p>
+            )}
+          </div>
         ) : (
           <button className={styles.change} onClick={toggleNote}>
             <svg

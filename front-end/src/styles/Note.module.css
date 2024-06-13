@@ -17,7 +17,7 @@
   border: 2px solid white;
 }
 
-.close{
+.close {
   position: fixed;
   top: 5%;
   left: 95%;
@@ -28,7 +28,7 @@
   padding: 3px;
   border-radius: 5px;
 }
-.open{
+.open {
   color: white;
   background-color: red;
   width: max-content;
@@ -55,6 +55,24 @@
   padding: 5px;
 }
 
+.inputErro {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.NotaOpen .dataAndChange {
+  height: max-content;
+}
+
+.inputErro p {
+  margin: 10 auto !important;
+  width: max-content !important;
+ 
+}
+
 .content {
   max-height: 200px;
   overflow: hidden;
@@ -66,13 +84,10 @@
 }
 
 .enviarNota {
-  width: 50% !important;
+  width: 80% !important;
   border-radius: 0 !important;
   margin: auto !important;
-  position: absolute;
-  bottom: 2%;
-  left: 50%;
-  transform: translate(-50%, 0);
+ 
   font-size: 1.3em;
   font-weight: bold;
   border-radius: 5px !important;
@@ -104,10 +119,14 @@
   overflow-wrap: break-word;
 }
 
-.nota .dataAndChange,
-.NotaOpen .dataAndChange {
+.nota .dataAndChange
+ {
   display: flex;
   height: max-content;
+}
+.NotaOpen .dataAndChange{
+display: flex;
+
 }
 .dataAndChange {
   margin-bottom: 10px;
@@ -132,5 +151,15 @@
 @media screen and (max-width: 810px) {
   .enviarNota {
     font-size: 0.8em;
+  }
+}
+
+@media screen and (max-width:683px){
+  .inputErro p {
+    font-size: 0.8em;
+    width: 95% !important;
+  }
+  .inputErro{
+    word-wrap: break-word;
   }
 }
