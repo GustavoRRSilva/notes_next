@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import Message from "@/Componentes/Message/message";
 import styles from "@/styles/Register.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { register, reset } from "@/slice/authSlice";
+import { login, register, reset } from "@/slice/authSlice";
 import next from "next";
+import { useRouter } from "next/router";
 
 export default function Register() {
+  const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState();
-  const [sucesso,setSucesso] = useState(false);
+  const [sucesso, setSucesso] = useState(false);
   const [error, setError] = useState("");
   const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
@@ -94,12 +96,23 @@ export default function Register() {
 
       const resultAction = await dispatch(register(user));
       if (register.fulfilled.match(resultAction)) {
-        setSucesso(true)
+        const userLogin = {
+          name,
+          email,
+          password,
+        };
+        setSucesso(true);
+        setTimeout(loginUser(userLogin), 3000);
       } else {
         console.log(resultAction.payload[0]);
         setError(resultAction.payload[0]);
       }
     }
+  };
+
+  const loginUser = (user) => {
+    dispatch(login(user));
+    router.push("/PageNotes")
   };
 
   const isDisabled = Object.keys(errors).length > 0;
@@ -146,7 +159,9 @@ export default function Register() {
             <p className={styles.error}>{errors.confirmPassword}</p>
           )}
           {error && <Message msg={error}></Message>}
-          {sucesso && <p className= {styles.sucesso}>Cadastro feito com sucesso!</p>}
+          {sucesso && (
+            <p className={styles.sucesso}>Cadastro feito com sucesso!</p>
+          )}
           <input
             type="submit"
             className={styles.submit}
