@@ -1,225 +1,280 @@
 .Background {
-    background: linear-gradient(#6f7357 49%, #6f7357 1%, #273a2d 49%, #273a2d 1%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: "Poppins", sans-serif;
+  background: linear-gradient(#6f7357 49%, #6f7357 1%, #273a2d 49%, #273a2d 1%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+}
+.Background .infosLogin {
+  background-color: #ffffff;
+  width: 100%;
+  height: max-content;
+  padding: 15px;
+  border-radius: 3px;
+  margin: auto 0px;
+}
+.register {
+  height: max-content;
+  font-size: 0.8em;
+  width: 80%;
+  margin-top: -10px;
+  text-align: right;
+  text-decoration: underline;
+  color: #6f7357;
+}
+.register:hover{
+  cursor: pointer;
+}
+.Background .infosLogin h2 {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+  height: max-content;
+}
+.logoNotes {
+  position: absolute;
+  max-width: 50px;
+  max-height: 50px;
+  top: 0;
+  right: 0;
+  margin: 5px 5px 0px 0px;
+}
+.or {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  height: max-content;
+}
+.or h3 {
+  height: max-content;
+  width: max-content;
+  color: rgba(#000000, #000000, #000000, 0.1);
+  font-weight: 900;
+  font-size: 0.9em;
+}
+.line {
+  width: 40%;
+  height: 2px;
+  background-color: black;
+}
+.saveAndForget {
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+.saveAndForget,
+.save {
+  display: flex;
+  min-width: 160px;
+}
+.save {
+  width: 50%;
+}
+.save p {
+  font-weight: 800;
+  min-width: 150px;
+  font-size: 0.8em;
+}
+.save input {
+  width: 20px;
+  margin: auto 2.5px auto 0;
+}
+.saveAndForget a {
+  width: 50%;
+  justify-content: center;
+  font-size: 0.8em;
+}
+.saveAndForget a p {
+  text-align: right;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+}
+.loginButton {
+  margin: 15px 0 10px 0;
+  background-color: #c8ad8d;
+  border: none;
+  padding: 12px 0;
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: 600;
+  transition: 0.5s;
+}
+.loginButton:focus {
+  background-color: #e4c5c4;
+  transition: 0.5s;
+}
+.imgLogin {
+  display: unset;
+}
+.loginGeral {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.imgLogin {
+  display: none;
+}
+.inputTextLogin {
+  margin-top: 10px;
+  background-color: #f8f7f7;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  padding: 8px 5px;
+  border-radius: 3px;
+  font-size: 1em;
+  max-width: 100%;
+}
+.inputTextLogin::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+  font-weight: 700;
+}
+.inputTextLogin:focus {
+  outline: 0;
+}
+.err {
+  text-align: center;
+  height: max-content;
+  margin-top: 5px;
+}
+.erro {
+  height: max-content;
+}
+@media screen and (min-width: 768px) {
+  .inputTextLogin {
+    max-height: 55px;
+    max-width: 80%;
   }
-  .Background .infosLogin {
-    background-color: #ffffff;
-    width: 90%;
-    height: max-content;
-    padding: 15px;
-    border-radius: 3px;
-  }
-  .Background .infosLogin h2 {
-    text-align: center;
-    font-weight: bold;
-    margin-top: 10px;
-    height: max-content;
-  }
-  .logoNotes {
-    position: absolute;
-    max-width: 50px;
-    max-height: 50px;
-    top: 0;
-    right: 0;
-    margin: 5px 5px 0px 0px;
-  }
-  .or {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-    height: max-content;
-  }
-  .or h3 {
-    height: max-content;
-    width: max-content;
-    color: rgba(#000000, #000000, #000000, 0.1);
-    font-weight: 900;
-    font-size: 0.9em;
-  
-  }
-  .line {
-    width: 40%;
-    height: 2px;
-    background-color: black;
-  }
-  .saveAndForget {
-    margin-top: 10px;
-    flex-wrap: wrap;
-  }
-  .saveAndForget,
-  .save {
-    display: flex;
-    min-width: 160px;
-  }
-  .save {
-    width: 50%;
-  }
-  .save p {
-    font-weight: 800;
-    min-width: 150px;
-    font-size: 0.8em;
-  }
-  .save input {
-    width: 20px;
-    margin: auto 2.5px auto 0;
-  }
+}
+@media screen and (max-width: 398px) {
   .saveAndForget a {
-    width: 50%;
-    justify-content: center;
-    font-size: 0.8em;
+    width: 100%;
   }
   .saveAndForget a p {
-    text-align: right;
-    color: rgba(0, 0, 0, 0.5);
-    font-weight: bold;
+    text-align: center;
+    margin: auto;
+  }
+  .save {
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 2.5px;
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .saveAndForget a p {
+    width: max-content;
+  }
+}
+
+@media screen and (max-width: 764px) {
+  .register {
+    margin: 5px;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .saveAndForget {
+    justify-content: center;
+  }
+  .saveAndForget a {
+    width: max-content;
+  }
+}
+@media screen and (min-width: 401px) {
+  .saveAndForget {
+    justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 765px) {
+  .saveAndForget {
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .imgLogin {
+    display: flex;
+    max-height: 600px;
+    justify-content: center;
+    background-color: #6f7357;
+    width: 100%;
+    padding: 10px;
+    max-width: 600px;
+    border-radius: 0px 5px 5px 0px;
+  }
+  .imgLoginSvg {
+    width: 50%;
+  }
+  .loginGeral {
+    padding: 20px;
+  }
+  .infosLogin {
+    max-height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    max-width: 900px;
+    border-radius: 5px 0px 0px 5px;
+  }
+  .Background .infosLogin {
+    height: 90%;
+    max-width: 600px;
+  }
+
+  .Background {
+    background: linear-gradient(to right, #6f7357 50%, #273a2d 50%);
+    font-size: 1.2em;
+  }
+  .infosLogin > div {
+    margin: 0 auto;
+  }
+
+  .save,
+  .save input,
+  .save p,
+  .saveAndForget,
+  .loginButton {
+    height: max-content;
   }
   .loginButton {
-    margin: 15px 0 10px 0;
-    background-color: #c8ad8d;
-    border: none;
-    padding: 12px 0;
-    border-radius: 5px;
-    font-size: 1em;
-    font-weight: 600;
-    transition: 0.5s;
+    width: 70%;
+    padding: -10px 0;
   }
-  .loginButton:focus {
+  .saveAndForget {
+    width: 80%;
+    margin-top: -10px;
+  }
+
+  .Background h2 {
+    font-size: 2em;
+  }
+  .or {
+    width: 80%;
+  }
+  .saveAndForget {
+    display: flex;
+    justify-content: center;
+  }
+  .save p {
+    min-width: 162px;
+  }
+  .loginButton:hover {
+    cursor: pointer;
     background-color: #e4c5c4;
     transition: 0.5s;
   }
-  .imgLogin {
-    display: unset;
+}
+
+@media screen and (min-width: 992px) {
+  .saveAndForget {
+    flex-wrap: wrap !important;
+    gap: 0px 20px;
+    justify-content: space-between;
+    align-items: baseline;
   }
-  .loginGeral {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  }
-  .imgLogin {
-    display: none;
-  }
-  .inputTextLogin{
-    margin-top: 10px;
-    background-color: #F8F7F7;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border: none;
-    padding: 8px 5px;
-    border-radius: 3px;
-    font-size: 1em;
-    max-width: 100%;
-  }
-  .inputTextLogin::placeholder{
-    color:rgba(0, 0, 0, 0.3);
-    font-weight:700;
-  
-  }
-  .inputTextLogin:focus{
-    outline: 0;
-  }
-  .err{
-    text-align: center;
-    height: max-content;
-    margin-top: 5px;
-  }
-  .erro{
-    height: max-content;
-  }
-  @media screen and (min-width:768px) {
-    .inputTextLogin{
-       max-height: 55px;
-       max-width: 80%;
-    }
-  }
-  @media screen and (max-width: 398px) {
-    .saveAndForget a {
-      width: 100%;
-    }
-    .saveAndForget a p {
-      text-align: center;
-    }
-    .save {
-      justify-content: center;
-      margin: auto;
-      margin-bottom: 2.5px;
-    }
-  }
-  
-  @media screen and (min-width: 768px) {
-    .imgLogin {
-      display: flex;
-      max-height: 600px;
-      justify-content: center;
-      background-color: #6f7357;
-      width: 100%;
-      padding: 10px;
-      max-width: 600px;
-      border-radius: 0px 5px 5px 0px;
-    }
-    .imgLoginSvg {
-      width: 50%;
-    }
-    .loginGeral {
-      padding: 20px;
-    }
-    .infosLogin {
-      max-height: 600px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-      max-width: 900px;
-      border-radius: 5px  0px 0px 5px ;
-    }
-    .Background .infosLogin {
-      height: 90%;
-      max-width: 600px;
-    
-    }
-   
-    .Background {
-      background: linear-gradient(to right, #6f7357 50%, #273a2d 50%);
-      font-size: 1.2em;
-    }
-    .infosLogin > div {
-      margin: 0 auto;
-    }
-  
-    .save, .save input, .save p,.saveAndForget,.loginButton{
-      height: max-content;
-    }
-    .loginButton{
-      width: 70%;
-      padding: -10px 0;
-    }
-    .saveAndForget{
-      width: 80%;
-      margin-top: -10px;
-    }
-  
-    .Background h2{
-      font-size: 2em;
-    }
-    .or{
-      width: 80%;
-    }
-    .saveAndForget{
-      display: flex;
-      justify-content: center;
-    }
-    .save p{
-      min-width: 162px;
-    }
-    .loginButton:hover{
-      cursor: pointer;
-      background-color: #e4c5c4;
-      transition: 0.5s;
-    }
-  }
-  
-  
+}

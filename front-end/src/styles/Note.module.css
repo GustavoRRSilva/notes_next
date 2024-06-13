@@ -70,7 +70,6 @@
 .inputErro p {
   margin: 10 auto !important;
   width: max-content !important;
- 
 }
 
 .content {
@@ -87,7 +86,7 @@
   width: 80% !important;
   border-radius: 0 !important;
   margin: auto !important;
- 
+
   font-size: 1.3em;
   font-weight: bold;
   border-radius: 5px !important;
@@ -119,14 +118,12 @@
   overflow-wrap: break-word;
 }
 
-.nota .dataAndChange
- {
+.nota .dataAndChange {
   display: flex;
   height: max-content;
 }
-.NotaOpen .dataAndChange{
-display: flex;
-
+.NotaOpen .dataAndChange {
+  display: flex;
 }
 .dataAndChange {
   margin-bottom: 10px;
@@ -154,12 +151,12 @@ display: flex;
   }
 }
 
-@media screen and (max-width:683px){
+@media screen and (max-width: 683px) {
   .inputErro p {
     font-size: 0.8em;
     width: 95% !important;
   }
-  .inputErro{
+  .inputErro {
     word-wrap: break-word;
   }
 }

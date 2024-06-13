@@ -1,36 +1,53 @@
+//React
 import React, { useEffect, useState } from "react";
 import styles from "@/styles/Login.module.css";
-import ButtonInfo from "@/Componentes/ButtonInfo/ButtonInfo";
-import { login, reset } from "@/slice/authSlice";
 import { useDispatch, useSelector } from "react-redux";
-import Message from "@/Componentes/Message/message";
 import { useRouter } from "next/router";
-import { useUser } from "@/contexts/userContext";
-export const Login = ({  }) => {
+
+//Componentes
+import ButtonInfo from "@/Componentes/ButtonInfo/ButtonInfo";
+import Message from "@/Componentes/Message/message";
+
+//Slice
+import { login, reset } from "@/slice/authSlice";
+import { getUserDetails } from "@/slice/userSlice";
+import Link from "next/link";
+
+export const Login = ({}) => {
   const router = useRouter();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const dispatch = useDispatch();
   const { loading, error } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    dispatch(getUserDetails());
+  }, []);
+
+  if (!user.length == undefined) {
+    router.push("/PageNotes");
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const user = {
+    const loginUser = {
       email,
       password,
     };
-    const resultAction = await dispatch(login(user));
-  
+    const resultAction = await dispatch(login(loginUser));
+
     if (login.fulfilled.match(resultAction)) {
       router.push("/PageNotes");
     } else {
-      console.error('Login failed:', resultAction.error.message);
+      console.error("Login failed:", resultAction.error.message);
     }
   };
   //Clean all auth states
   useEffect(() => {
     dispatch(reset());
   }, [dispatch]);
+
   return (
     <html>
       <body className={styles.Background}>
@@ -87,16 +104,10 @@ export const Login = ({  }) => {
                   className={styles.inputTextLogin}
                   placeholder="Sua senha"
                 />
-                <section className={styles.saveAndForget}>
-                  <div className={styles.save}>
-                    <input type="checkbox" name="" id="" />
-                    <p>Salve minha conta</p>
-                  </div>
-                  <a href="#">
-                    <p>Esqueci a senha</p>
-                  </a>
-                </section>
-                <div className={styles.erro}></div>
+
+                <Link href={"auth/Register"} className={styles.register}>
+                  <h3>Registre-se</h3>
+                </Link>
 
                 {!loading && (
                   <input type="submit" className={styles.loginButton}></input>

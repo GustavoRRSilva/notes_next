@@ -18,10 +18,11 @@ import { getUserNotes } from "@/slice/notesSlice";
 // Importando container que exibe todas as notas
 import NotesContainer from "@/Componentes/NotesContainer";
 import AlertDeleteNote from "@/Componentes/AlertDeleteNote";
-
+import { useRouter } from "next/router";
 
 export default function PageNotes() {
   const { user, loading } = useSelector((state) => state.user);
+  const router = useRouter();
   const [showPost, setShowPost] = useState(false);
   const [showAlertDelete, setShowAlertDelete] = useState(false);
   const [showNotes, setShowNotes] = useState(false);
@@ -29,18 +30,22 @@ export default function PageNotes() {
   const openShowPost = () => {
     setShowPost((prevShowPost) => !prevShowPost); // Alterna o estado showPost
   };
+
   useEffect(() => {
-    dispatch(getUserDetails());
-    setShowNotes(true);
+    const fetchUserDetails = async () => {
+       dispatch(getUserDetails());
+      setShowNotes(true);
+    };
+
+    fetchUserDetails();
   }, [dispatch]);
 
-  if (loading) {
-    return <p>Carregando</p>;
-  }
+ 
+
   return (
     <div className={styles.contentNext}>
       {showPost && <PostNote></PostNote>}
-      
+
       <section className={styles.notesLeft}>
         <div className={styles.logoNotes}>
           <svg

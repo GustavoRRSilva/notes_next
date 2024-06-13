@@ -3,7 +3,7 @@ import { useUser } from "@/contexts/userContext";
 
 // Register a user
 const register = async (data) => {
-  const config = requestConfig("POST", data);
+  const config = requestConfig("POST", " ", data);
 
   try {
     const res = await fetch(api + "/users/register", config);
@@ -13,11 +13,11 @@ const register = async (data) => {
       localStorage.setItem("user", JSON.stringify(result));
       return result;
     } else {
-      return { errors: [result.message || "Erro desconhecido"] };
+      return { errors: [result.errors || "Erro desconhecido"] };
     }
   } catch (error) {
     console.error("Erro no registro:", error);
-    return { errors: [error.message || "Erro desconhecido"] };
+    return { errors: [result.errors || "Erro desconhecido"] };
   }
 };
 
@@ -33,7 +33,7 @@ const login = async (data) => {
   try {
     const res = await fetch(api + "/users/login", config);
     const result = await res.json();
-  
+
     if (res.ok) {
       localStorage.setItem("user", JSON.stringify(result));
 
@@ -42,7 +42,6 @@ const login = async (data) => {
       return { errors: [result.errors || "Erro desconhecido"] };
     }
   } catch (error) {
-
     console.error("Erro no login:", error);
     return { errors: [error.message || "Erro desconhecido"] };
   }
