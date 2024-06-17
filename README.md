@@ -62,6 +62,7 @@ Esta seção deve listar qualquer framework/biblioteca principal usada para inic
 
 * [![Next][Next.js]][Next-url]
 * [![React][React.js]][React-url]
+* <img src = "https://img.icons8.com/?size=100&id=54087&format=png&color=000000" style = "width:5%"/>
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
