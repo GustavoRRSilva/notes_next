@@ -26,7 +26,6 @@ Claro! Aqui está o README personalizado para o seu projeto `notes_next`:
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
@@ -34,13 +33,14 @@ Claro! Aqui está o README personalizado para o seu projeto `notes_next`:
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/GustavoRRSilva/notes_next">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+
+  ![logo](https://github.com/GustavoRRSilva/notes_next/assets/108638526/d2fbe700-4b0d-477f-b1c2-3334b8c2dbdf)
   </a>
 
   <h3 align="center">notes_next</h3>
 
- 
+ ![Desktop - 1](https://github.com/GustavoRRSilva/notes_next/assets/108638526/3f8323a2-18bc-4bc1-a758-8b0c49d1f5ed)
+
 
 
 
@@ -51,7 +51,7 @@ Claro! Aqui está o README personalizado para o seu projeto `notes_next`:
 <!-- SOBRE O PROJETO -->
 ## Sobre o Projeto
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+
 
 O notes_next é um projeto fullstack desenvolvido para fornecer uma aplicação web de gerenciamento de notas, onde os usuários podem se registrar, fazer login, criar, deletar e editar suas notas. Este projeto foi construído utilizando as tecnologias mais recentes para garantir uma experiência de usuário eficiente e intuitiva.
 
@@ -66,9 +66,6 @@ Esta seção deve listar qualquer framework/biblioteca principal usada para inic
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
 
-
-<!-- COMEÇANDO -->
-Claro! Aqui está a seção "Como Começar" personalizada para o seu projeto `notes_next`:
 
 ---
 
@@ -115,9 +112,12 @@ Certifique-se de ter o Node.js instalado em sua máquina. Você pode baixá-lo [
 <!-- USO -->
 ## Uso
 
-Use este espaço para mostrar exemplos úteis de como um projeto pode ser usado. Screenshots adicionais, exemplos de código e demos funcionam bem neste espaço. Você também pode vincular a mais recursos.
+Crie sua conta e se sinta a vontade para gerenciar suas notas!
 
 _Para mais exemplos, por favor, consulte a [Documentação](https://example.com)_
+
+![Desktop - 2](https://github.com/GustavoRRSilva/notes_next/assets/108638526/e5cf570c-e7e4-4763-9167-636c859997d7)
+![Desktop - 3](https://github.com/GustavoRRSilva/notes_next/assets/108638526/ff3e4a9f-4a6d-4248-bc76-4ff4feadecb3)
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
@@ -182,7 +182,7 @@ _next)
 [license-shield]: https://img.shields.io/github/license/GustavoRRSilva/notes_next.svg?style=for-the-badge
 [license-url]: https://github.com/GustavoRRSilva/notes_next/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/seu_perfil
+[linkedin-url]: https://www.linkedin.com/in/gustavo-rodrigues-114526242/
 
 [product-screenshot]: images/screenshot.png
 
@@ -190,8 +190,3 @@ _next)
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-blue?style=for-the-badge&logo=react&logoColor=white
 [React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev
